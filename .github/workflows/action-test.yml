@@ -36,4 +36,4 @@ jobs:
           password: flywaypassword
           locations: ./tests
       - name: Show output
-        run: echo "${{ step.migrate-sql.outputs.migration-status }}"
+        run: echo "${{ steps.migrate-sql.outputs.migration-status }}"
