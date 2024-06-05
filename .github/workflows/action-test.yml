@@ -10,7 +10,7 @@ jobs:
   test-postgres:
     strategy:
       matrix:
-        version: [12, 13, 14, 15, 16]
+        version: [14, 15, 16]
     runs-on: ubuntu-latest
     services:
       postgres:
