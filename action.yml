@@ -4,8 +4,6 @@ description: CI/CD Database Schema Management With Flyway CLI
 branding:
   icon: database
 inputs:
-  driver:
-
   locations:
     description: migration script location(e.g ./migrations)
     required: true
