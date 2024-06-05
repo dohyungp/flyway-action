@@ -1,6 +1,9 @@
 FROM flyway/flyway:latest-alpine
 
-WORKDIR /flyway
-COPY entrypoint.sh md_converter.py /flyway/
+COPY entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["/flyway/entrypoint.sh"]
+WORKDIR /action/workspace
+
+COPY markdown_converter.py /action/workspace/markdown_converter.py
+
+ENTRYPOINT ["/entrypoint.sh"]
