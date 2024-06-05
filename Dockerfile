@@ -1,4 +1,4 @@
-FROM flyway/flyway:10.14-alpine
+FROM flyway/flyway:latest-alpine
 
 COPY entrypoint.sh /entrypoint.sh
 

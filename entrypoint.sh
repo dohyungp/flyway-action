@@ -3,4 +3,6 @@
 set -e
 
 /flyway/flyway migrate
-/flyway/flyway info >> $GITHUB_OUTPUT
+result=$(/flyway/flyway info)
+
+ echo "migration-status=$result" >> $GITHUB_OUTPUT
