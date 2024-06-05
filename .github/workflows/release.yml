@@ -1,5 +1,5 @@
 ---
-name: Flyway Action Test
+name: Publish Flyway Action Image
 
 on:
   push:
