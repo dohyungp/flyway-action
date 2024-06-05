@@ -3,4 +3,4 @@
 set -e
 
 /flyway/flyway migrate
-/flyway/flyway info | ./md_converter.py >> $GITHUB_STEP_SUMMARY
+/flyway/flyway info | /action/workspace/md_converter.py >> $GITHUB_STEP_SUMMARY

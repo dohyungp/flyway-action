@@ -4,6 +4,6 @@ COPY entrypoint.sh /entrypoint.sh
 
 WORKDIR /action/workspace
 
-COPY markdown_converter.py /action/workspace/markdown_converter.py
+COPY md_converter.py /action/workspace/md_converter.py
 
 ENTRYPOINT ["/entrypoint.sh"]
