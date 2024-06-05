@@ -1,0 +1,51 @@
+name: Flyway Action
+description: CI/CD Database Schema Management With Flyway CLI
+
+branding:
+  icon: database
+inputs:
+  driver:
+
+  locations:
+    description: migration script location(e.g ./migrations)
+    required: true
+    default: ./sql
+  db-type:
+    description: database type(e.g postgresql, mysql)
+    required: true
+    default: postgresql
+    type: choice
+    options:
+      - postgresql
+      - mysql
+  port:
+    descrption: db port
+    required: false
+    default: 5432
+  user:
+    description: db username
+    requred: false
+  password:
+    description: db password
+    requred: false
+  schemas:
+    description: comma seperated db schema(e.g flyway,public)
+    required: false
+  jdbc-url:
+    description: jdbc url(e.g jdbc:postgresql://dbhost.com:dbport/dbname)
+    required: true
+  init-sql:
+    description: jdbc init sql
+    required: false
+output:
+  migration-status:
+    description: migration result
+runs:
+  using: docker
+  image: Dockerfile
+  env:
+    FLYWAY_URL: ${{ inputs.jdbc-url }}
+    FLYWAY_USER: ${{ inputs.user }}
+    FLYWAY_PASSWORD: ${{ inputs.password }}
+    FLYWAY_LOCATIONS: filesystem:${{ inputs.locations }}
+    FLYWAY_INIT_SQL: ${{ inputs.init-sql }}

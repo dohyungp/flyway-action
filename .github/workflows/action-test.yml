@@ -1,0 +1,39 @@
+name: Flyway Action Test
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test-postgres:
+    strategy:
+      matrix:
+        version: [12, 13, 14, 15, 16]
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:${{ matrix.version }}
+        env:
+          POSTGRES_DB: flywaydb
+          POSTGRES_USER: flywayuser
+          POSTGRES_PASSWORD: flywaypassword
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Migrate SQL
+        id: migrate-sql
+        uses: ./
+        with:
+          jdbc-url: jdbc:postgresql://postgres:5432/flywaydb
+          user: flywayuser
+          password: flywaypassword
+          locations: ./tests
+      - name: Show output
+        run: echo "${{ step.migrate-sql.outputs.migration-status }}"
