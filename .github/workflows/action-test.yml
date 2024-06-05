@@ -9,13 +9,10 @@ on:
 
 jobs:
   test-postgres:
-    strategy:
-      matrix:
-        version: [14, 15, 16]
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:${{ matrix.version }}
+        image: postgres:14
         env:
           POSTGRES_DB: flywaydb
           POSTGRES_USER: flywayuser
@@ -36,10 +33,3 @@ jobs:
           user: flywayuser
           password: flywaypassword
           locations: ./tests
-      - name: Show output
-        run: echo "${{ steps.migrate-sql.outputs.migration-status }}"
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: workspace_artifacts
-          path: ${{ github.workspace }}

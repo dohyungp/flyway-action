@@ -39,9 +39,6 @@ inputs:
   init-sql:
     description: jdbc init sql
     required: false
-output:
-  migration-status:
-    description: migration result
 runs:
   using: docker
   image: Dockerfile
