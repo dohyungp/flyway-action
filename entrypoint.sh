@@ -2,5 +2,5 @@
 
 set -e
 
-flyway migrate
-flyway info >> $GITHUB_OUTPUT
+/flyway/flyway migrate
+/flyway/flyway info >> $GITHUB_OUTPUT
