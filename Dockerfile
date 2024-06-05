@@ -1,6 +1,6 @@
 FROM flyway/flyway:latest-alpine
 
-COPY entrypoint.sh /entrypoint.sh
-COPY md_converter .
+WORKDIR /flyway
+COPY entrypoint.sh md_converter /flyway/
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/flyway/entrypoint.sh"]

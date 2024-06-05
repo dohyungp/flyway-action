@@ -2,5 +2,5 @@
 
 set -e
 
-/flyway/flyway migrate
-/flyway/flyway info | ./md_converter >> $GITHUB_STEP_SUMMARY
+flyway migrate
+flyway info | ./md_converter.py >> $GITHUB_STEP_SUMMARY
