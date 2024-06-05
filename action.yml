@@ -41,7 +41,7 @@ inputs:
     required: false
 runs:
   using: docker
-  image: Dockerfile
+  image: docker://ghcr.io/dohyungp/flyway-action:v1
   env:
     FLYWAY_VERSION: ${{ inputs.version }}
     FLYWAY_URL: ${{ inputs.jdbc-url }}
